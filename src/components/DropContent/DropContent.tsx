@@ -12,7 +12,6 @@ export const DropContent: React.FC<Props> = ({ peoples, onSelected }) => {
       {peoples.map(person => (
         <DropItem key={person.name} person={person} onSelected={onSelected} />
       ))}
-      ;
     </div>
   );
 };

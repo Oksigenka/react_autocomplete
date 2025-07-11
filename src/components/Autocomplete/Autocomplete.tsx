@@ -1,19 +1,17 @@
 import React, { useRef, useState } from 'react';
-import { Person } from './types/Person';
+import { Person } from '../../types/Person';
 import { DropContent } from '../DropContent';
 
 interface Props {
   people: Person[];
   onSelected: (person: Person | null) => void;
   debounceTime?: number;
-  onQueryChange?: (value: string) => void;
 }
 
 export const Autocomplete: React.FC<Props> = ({
   people,
   onSelected,
   debounceTime = 300,
-  onQueryChange,
 }) => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +24,6 @@ export const Autocomplete: React.FC<Props> = ({
     const value = element.target.value;
 
     setQuery(value);
-    onQueryChange?.(value);
 
     clearTimeout(debounceTimeout.current);
 
@@ -53,7 +50,7 @@ export const Autocomplete: React.FC<Props> = ({
       }
 
       const filtered = people.filter(person =>
-        person.name.toLowerCase().includes(value.toLowerCase())
+        person.name.toLowerCase().includes(value.toLowerCase()),
       );
 
       setFilteredPeople(filtered);
@@ -112,7 +109,6 @@ export const Autocomplete: React.FC<Props> = ({
           )}
         </div>
       )}
-
     </div>
   );
 };

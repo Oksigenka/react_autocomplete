@@ -6,7 +6,6 @@ import { Autocomplete } from './components/Autocomplete';
 
 export const App: React.FC = () => {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
-  const [, setQuery] = useState('');
 
   return (
     <div className="container">
@@ -21,7 +20,6 @@ export const App: React.FC = () => {
           people={peopleFromServer}
           onSelected={setSelectedPerson}
           debounceTime={300}
-          onQueryChange={setQuery}
         />
       </main>
     </div>
